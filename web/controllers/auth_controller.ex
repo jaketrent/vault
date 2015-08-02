@@ -3,14 +3,19 @@ defmodule DemoPhoenixOauth.AuthController do
 
   # plug :action
 
-  @doc """
-  This action is reached via `/auth` and redirects to the OAuth2 provider
-  based on the chosen strategy.
-  """
-  def index(conn, _params) do
+  def login(conn, _params) do
     IO.puts ("-------here!")
     redirect conn, external: GitHubAuth.authorize_url!
   end
+
+  def logout(conn, _params) do
+    IO.puts("-----out")
+    fetch_session(conn)
+    |> delete_session(:current_user)
+    |> delete_session(:access_token)
+    |> redirect(to: "/")
+  end
+
 
   @doc """
   This action is reached via `/auth/callback` is the the callback URL that

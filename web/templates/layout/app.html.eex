@@ -15,7 +15,21 @@
     <div class="container" role="main">
       <div class="header">
         <ul class="nav nav-pills pull-right">
-          <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>
+          <%= if @current_user do %>
+            <li>
+              <span>Welcome, <%= @current_user["name"] %>!</span>
+              <img src="<%= @current_user["avatar_url"] %>" class="img-circle"/>
+            </li>
+            <li>
+              <a href="<%= auth_path @conn, :logout %>">Logout</a>
+            </li>
+          <% else %>
+            <li>
+              <a href="<%= auth_path @conn, :login %>">
+                Sign in with GitHub
+              </a>
+            </li>
+          <% end %>
         </ul>
         <span class="logo"></span>
       </div>
@@ -27,8 +41,8 @@
 
     </div> <!-- /container -->
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
-    
+
     <script>require("web/static/js/app")</script>
-    
+
   </body>
 </html>

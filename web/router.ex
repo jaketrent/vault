@@ -26,7 +26,8 @@ defmodule DemoPhoenixOauth.Router do
 
   scope "/auth", alias: DemoPhoenixOauth do
     pipe_through :browser
-    get "/", AuthController, :index
+    get "/login", AuthController, :login
+    get "/logout", AuthController, :logout
     get "/callback", AuthController, :callback
   end
 
