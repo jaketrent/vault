@@ -4,6 +4,7 @@ defmodule DemoPhoenixOauth.Router do
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
+    plug :assign_current_user
     plug :fetch_flash
     plug :protect_from_forgery
   end
@@ -22,4 +23,17 @@ defmodule DemoPhoenixOauth.Router do
   # scope "/api", DemoPhoenixOauth do
   #   pipe_through :api
   # end
+
+  scope "/auth", alias: DemoPhoenixOauth do
+    pipe_through :browser
+    get "/", AuthController, :index
+    get "/callback", AuthController, :callback
+  end
+
+  # Fetch the current user from the session and add it to `conn.assigns`. This
+  # will allow you to have access to the current user in your views with
+  # `@current_user`.
+  defp assign_current_user(conn, _) do
+    assign(conn, :current_user, get_session(conn, :current_user))
+  end
 end
