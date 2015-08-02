@@ -32,5 +32,5 @@ defmodule DemoPhoenixOauth.Endpoint do
     key: "_demo_phoenix_oauth_key",
     signing_salt: "7WTy/lJ/"
 
-  plug :router, DemoPhoenixOauth.Router
+  plug DemoPhoenixOauth.Router
 end
