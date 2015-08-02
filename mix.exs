@@ -18,7 +18,7 @@ defmodule DemoPhoenixOauth.Mixfile do
   def application do
     [mod: {DemoPhoenixOauth, []},
      applications: [:phoenix, :phoenix_html, :cowboy, :logger,
-                    :phoenix_ecto, :postgrex]]
+                    :phoenix_ecto, :postgrex, :oauth2]]
   end
 
   # Specifies which paths to compile per environment
@@ -34,6 +34,7 @@ defmodule DemoPhoenixOauth.Mixfile do
      {:postgrex, ">= 0.0.0"},
      {:phoenix_html, "~> 1.1"},
      {:phoenix_live_reload, "~> 0.4", only: :dev},
-     {:cowboy, "~> 1.0"}]
+     {:cowboy, "~> 1.0"},
+     {:oauth2, "~> 0.2.0"}]
   end
 end
