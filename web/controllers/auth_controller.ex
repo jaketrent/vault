@@ -30,23 +30,30 @@ defmodule DemoPhoenixOauth.AuthController do
     # Request the user's data with the access token
     user = OAuth2.AccessToken.get!(token, "/user")
 
-    # Store the user in the session under `:current_user` and redirect to /.
-    # In most cases, we'd probably just store the user's ID that can be used
-    # to fetch from the database. In this case, since this example app has no
-    # database, I'm just storing the user map.
-    #
-    # If you need to make additional resource requests, you may want to store
-    # the access token as well.
-    conn
-    |> put_session(:current_user, user)
-    |> put_session(:access_token, token.access_token)
-    |> redirect(to: "/")
+    IO.inspect(user)
 
-    # TODO: check for username against auth list (ie, 'jaketrent')
+    if (is_authz?(user)) do
 
-    # TODO: render html with js close (see jaketrent-books)
+      # Store the user in the session under `:current_user` and redirect to /.
+      # In most cases, we'd probably just store the user's ID that can be used
+      # to fetch from the database. In this case, since this example app has no
+      # database, I'm just storing the user map.
+      #
+      # If you need to make additional resource requests, you may want to store
+      # the access token as well.
+      conn
+      |> put_session(:current_user, user)
+      |> put_session(:access_token, token.access_token)
+      |> redirect(to: "/")
+      # TODO: render html with js close (see jaketrent-books)
+    else
+      redirect(conn, to: "/?auth=false")
+      # TODO: put status for error
+    end
   end
 
-
+  defp is_authz?(user) do
+    Map.get(user, "login") == "jaketrent"
+  end
 
 end
