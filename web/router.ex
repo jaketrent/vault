@@ -22,7 +22,9 @@ defmodule DemoPhoenixOauth.Router do
   scope "/api", DemoPhoenixOauth do
     pipe_through :api
 
-    resources "/quotes", QuoteController
+    scope "/v1", V1, as: :v1 do
+      resources "/quotes", QuoteController
+    end
   end
 
 

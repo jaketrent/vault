@@ -1,4 +1,4 @@
-defmodule DemoPhoenixOauth.QuoteController do
+defmodule DemoPhoenixOauth.V1.QuoteController do
   use DemoPhoenixOauth.Web, :controller
 
   alias DemoPhoenixOauth.Quote
