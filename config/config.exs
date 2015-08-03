@@ -10,7 +10,7 @@ config :demo_phoenix_oauth, DemoPhoenixOauth.Endpoint,
   url: [host: "localhost"],
   root: Path.dirname(__DIR__),
   secret_key_base: "I0BOQLrb7gOh3ItcX6c/+UW/+cR+T9d7PF/hL1QUh+aDQkJE+m00vEJDJYMA9Xl6",
-  render_errors: [default_format: "html"],
+  render_errors: [default_format: "json"],
   pubsub: [name: DemoPhoenixOauth.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
