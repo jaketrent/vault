@@ -6,17 +6,9 @@ defmodule DemoPhoenixOauth.ChangesetView do
   end
 
   defp fmt_validation_error({ key, err }) do
-    %{ detail: fmt_detail(key, err),
-       source: fmt_pointer(key),
+    %{ detail: ErrorFormatter.fmt_detail(key, err),
+       source: ErrorFormatter.fmt_pointer(key),
        status: 422 }
-  end
-
-  defp fmt_detail(key, err) do
-   String.capitalize(Atom.to_string(key)) <> " " <> err
-  end
-
-  defp fmt_pointer(key) do
-    %{ pointer: "/data" <> "/" <> Atom.to_string(key) }
   end
 end
 

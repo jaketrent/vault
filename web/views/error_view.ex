@@ -1,19 +1,20 @@
 defmodule DemoPhoenixOauth.ErrorView do
   use DemoPhoenixOauth.Web, :view
 
+  def render("400.json", assigns) do
+    %{errors: [render_one(assigns.reason, DemoPhoenixOauth.ErrorView, "error.json") ]}
+  end
+
   def render("404.json", assigns) do
-    %{errors: [render_one(assigns.reason, QuotesApi.ErrorView, "error.json") ]}
+    %{errors: [render_one(assigns.reason, DemoPhoenixOauth.ErrorView, "error.json") ]}
   end
 
   def render("500.json", assigns) do
-    %{errors: [render_one(assigns.reason, QuotesApi.ErrorView, "error.json") ]}
+    %{errors: [render_one(assigns.reason, DemoPhoenixOauth.ErrorView, "error.json") ]}
   end
 
   def render("error.json", reason) do
-    status = Map.fetch(reason.error, :plug_status)
-    %{ code: get_code(status),
-       detail: (if Map.has_key?(reason.error, :message), do: String.capitalize(reason.error.message), else: "Generic Error"),
-       status: status }
+    reason.error
   end
 
   # In case no render clause matches or no
@@ -21,13 +22,25 @@ defmodule DemoPhoenixOauth.ErrorView do
   def template_not_found(_template, assigns) do
     render "500.json", assigns
   end
+end
 
-  defp get_code(plug_status) do
-    case plug_status do
-      400 -> "bad-request"
-      404 -> "not-found"
-      422 -> "validation"
-      _ -> "internal-server"
-    end
+defimpl Poison.Encoder, for: Phoenix.MissingParamError do
+  def encode(error, _options) do
+    %{
+      detail: ErrorFormatter.get_msg(error)
+              |> ErrorFormatter.fmt_detail,
+      status: 422,
+      source: ErrorFormatter.fmt_pointer()
+    } |> Poison.Encoder.encode([])
+  end
+end
+
+defimpl Poison.Encoder, for: Ecto.NoResultsError do
+  def encode(error, _options) do
+    %{
+      detail: ErrorFormatter.get_msg(error)
+              |> ErrorFormatter.fmt_detail,
+      status: 404
+    } |> Poison.Encoder.encode([])
   end
 end
