@@ -10,6 +10,17 @@ defmodule DemoPhoenixOauth.V1.QuoteView do
   end
 
   def render("quote.json", %{quote: quote}) do
-    %{id: quote.id}
+    quote
+  end
+end
+
+defimpl Poison.Encoder, for: DemoPhoenixOauth.Quote do
+  def encode(quote, _options) do
+    %{
+      title: quote.title,
+      body: quote.body,
+      author: quote.author,
+      createdAt: quote.inserted_at
+    } |> Poison.Encoder.encode([])
   end
 end
