@@ -29,6 +29,7 @@ config :logger, :console, format: "[$level] $message\n"
 # Configure your database
 config :demo_phoenix_oauth, DemoPhoenixOauth.Repo,
   adapter: Ecto.Adapters.Postgres,
+  hostname: "localhost",
   username: "postgres",
   password: "postgres",
   database: "demo_phoenix_oauth_dev",
