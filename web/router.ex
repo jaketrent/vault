@@ -19,13 +19,16 @@ defmodule DemoPhoenixOauth.Router do
     get "/", PageController, :index
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", DemoPhoenixOauth do
-  #   pipe_through :api
-  # end
+  scope "/api", DemoPhoenixOauth do
+    pipe_through :api
+
+    resources "/quotes", QuoteController
+  end
+
 
   scope "/auth", alias: DemoPhoenixOauth do
     pipe_through :browser
+
     get "/login", AuthController, :login
     get "/logout", AuthController, :logout
     get "/callback", AuthController, :callback
