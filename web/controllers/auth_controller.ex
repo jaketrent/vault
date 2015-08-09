@@ -8,6 +8,12 @@ defmodule DemoPhoenixOauth.AuthController do
     redirect conn, external: GitHubAuth.authorize_url!
   end
 
+  def current(conn, _params) do
+    current_user = fetch_session(conn)
+    |> get_session(:current_user)
+    json(conn, %{ data: current_user })
+  end
+
   def logout(conn, _params) do
     IO.puts("-----out")
     fetch_session(conn)
