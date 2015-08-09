@@ -13,6 +13,10 @@ defmodule DemoPhoenixOauth.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :auth do
+    plug AuthenticationPlug
+  end
+
   scope "/", DemoPhoenixOauth do
     pipe_through :browser # Use the default browser stack
 
@@ -20,19 +24,19 @@ defmodule DemoPhoenixOauth.Router do
   end
 
   scope "/api", DemoPhoenixOauth do
-    pipe_through :api
+    pipe_through [:api, :auth] # TODO, try vararg
 
     scope "/v1", V1, as: :v1 do
       resources "/quotes", QuoteController
     end
   end
 
-
   scope "/auth", alias: DemoPhoenixOauth do
     pipe_through :browser
 
     get "/login", AuthController, :login
     get "/logout", AuthController, :logout
+    get "/current", AuthController, :current
     get "/callback", AuthController, :callback
   end
 
