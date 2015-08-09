@@ -1,4 +1,4 @@
-defmodule DemoPhoenixOauth.BookController do
+defmodule DemoPhoenixOauth.V1.BookController do
   use DemoPhoenixOauth.Web, :controller
 
   alias DemoPhoenixOauth.Book
