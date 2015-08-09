@@ -24,7 +24,7 @@ defmodule DemoPhoenixOauth.Router do
   end
 
   scope "/api", DemoPhoenixOauth do
-    pipe_through [:api, :auth] # TODO, try vararg
+    pipe_through :api
 
     scope "/v1", V1, as: :v1 do
       resources "/quotes", QuoteController
