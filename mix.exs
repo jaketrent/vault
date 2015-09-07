@@ -29,7 +29,8 @@ defmodule DemoPhoenixOauth.Mixfile do
   #
   # Type `mix help deps` for examples and options
   defp deps do
-    [{:phoenix, "~> 0.14"},
+    [{:cors_plug, "~> 0.1.3"},
+     {:phoenix, "~> 0.14"},
      {:phoenix_ecto, "~> 0.5"},
      {:postgrex, ">= 0.0.0"},
      {:phoenix_html, "~> 1.1"},
