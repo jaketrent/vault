@@ -3,14 +3,14 @@ defmodule DemoPhoenixOauth.V1.BookController do
 
   alias DemoPhoenixOauth.Book
 
-  plug :scrub_params, "book" when action in [:create, :update]
+  plug :scrub_params, "data" when action in [:create, :update]
 
   def index(conn, _params) do
     books = Repo.all(Book)
     render(conn, "index.json", books: books)
   end
 
-  def create(conn, %{"book" => book_params}) do
+  def create(conn, %{"data" => book_params}) do
     changeset = Book.changeset(%Book{}, book_params)
 
     case Repo.insert(changeset) do
@@ -28,7 +28,7 @@ defmodule DemoPhoenixOauth.V1.BookController do
     render conn, "show.json", book: book
   end
 
-  def update(conn, %{"id" => id, "book" => book_params}) do
+  def update(conn, %{"id" => id, "data" => book_params}) do
     book = Repo.get!(Book, id)
     changeset = Book.changeset(book, book_params)
 
