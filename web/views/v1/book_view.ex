@@ -6,7 +6,7 @@ defmodule DemoPhoenixOauth.V1.BookView do
   end
 
   def render("show.json", %{book: book}) do
-    %{data: render_one(book, DemoPhoenixOauth.V1.BookView, "book.json")}
+    %{data: render_many([book], DemoPhoenixOauth.V1.BookView, "book.json")}
   end
 
   def render("book.json", %{book: book}) do
