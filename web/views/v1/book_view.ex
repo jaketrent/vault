@@ -17,6 +17,7 @@ end
 defimpl Poison.Encoder, for: DemoPhoenixOauth.Book do
   def encode(book, _options) do
     %{
+      id: book.id,
       title: book.title,
       author: book.author,
       description: book.description,
