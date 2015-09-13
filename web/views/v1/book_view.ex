@@ -10,12 +10,6 @@ defmodule DemoPhoenixOauth.V1.BookView do
   end
 
   def render("book.json", %{book: book}) do
-    book
-  end
-end
-
-defimpl Poison.Encoder, for: DemoPhoenixOauth.Book do
-  def encode(book, _options) do
     %{
       id: book.id,
       title: book.title,
@@ -26,6 +20,6 @@ defimpl Poison.Encoder, for: DemoPhoenixOauth.Book do
       reviewUrl: book.review_url,
       affiliateUrl: book.affiliate_url,
       createdAt: book.inserted_at
-    } |> Poison.Encoder.encode([])
+    }
   end
 end
