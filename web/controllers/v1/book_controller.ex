@@ -15,7 +15,9 @@ defmodule DemoPhoenixOauth.V1.BookController do
 
     case Repo.insert(changeset) do
       {:ok, book} ->
-        render(conn, "show.json", book: book)
+        conn
+        |> put_status(:created)
+        |> render("show.json", book: book)
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
