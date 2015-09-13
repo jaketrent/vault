@@ -13,8 +13,8 @@ defmodule DemoPhoenixOauth.Book do
     timestamps
   end
 
-  @required_fields ~w(title author description cover_url complete_date review_url affiliate_url)
-  @optional_fields ~w()
+  @required_fields ~w(title author description cover_url complete_date)
+  @optional_fields ~w(review_url affiliate_url)
 
   @doc """
   Creates a changeset based on the `model` and `params`.

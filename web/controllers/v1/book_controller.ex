@@ -11,7 +11,7 @@ defmodule DemoPhoenixOauth.V1.BookController do
   end
 
   def create(conn, %{"data" => book_params}) do
-    changeset = Book.changeset(%Book{}, book_params)
+    changeset = Book.changeset(%Book{}, underscorize(book_params))
 
     case Repo.insert(changeset) do
       {:ok, book} ->
@@ -50,5 +50,13 @@ defmodule DemoPhoenixOauth.V1.BookController do
     book = Repo.delete!(book)
 
     send_resp(conn, :no_content, "")
+  end
+
+  defp convert_string_to_atom_keys(map) do
+    for {key, val} <- map, into: %{}, do: {String.to_atom(key), val}
+  end
+
+  defp underscorize(map) do
+    for {key, val} <- map, into: %{}, do: {Mix.Utils.underscore(key), val}
   end
 end
