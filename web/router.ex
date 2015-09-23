@@ -7,6 +7,7 @@ defmodule DemoPhoenixOauth.Router do
     plug :assign_current_user
     plug :fetch_flash
     plug :protect_from_forgery
+    plug :put_secure_browser_headers
   end
 
   pipeline :api do
