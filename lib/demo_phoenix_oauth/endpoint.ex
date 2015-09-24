@@ -18,7 +18,10 @@ defmodule DemoPhoenixOauth.Endpoint do
 
   plug Plug.RequestId
   plug Plug.Logger
-  plug CORSPlug, [origin: System.get_env("ALLOWED_ORIGIN")]
+  plug CORSPlug, [
+    origin: System.get_env("ALLOWED_ORIGIN"),
+    expose: ["Link"]
+  ]
 
   plug Plug.Parsers,
     parsers: [:urlencoded, :multipart, :json],
