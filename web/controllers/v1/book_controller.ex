@@ -2,12 +2,19 @@ defmodule DemoPhoenixOauth.V1.BookController do
   use DemoPhoenixOauth.Web, :controller
 
   alias DemoPhoenixOauth.Book
+  alias DemoPhoenixOauth.Router.Helpers, as: RouterHelpers
 
   plug :scrub_params, "data" when action in [:create, :update]
 
   def index(conn, _params) do
-    books = Repo.all(Book)
-    render(conn, "index.json", books: books)
+    page = Book
+    |> DemoPhoenixOauth.Repo.paginate(_params)
+
+    conn
+    |> merge_resp_headers([
+      { "Link", LinkFormatter.format(RouterHelpers.v1_book_url(conn, :index), page) }
+    ])
+    |> render("index.json", books: page.entries)
   end
 
   def create(conn, %{"data" => book_params}) do
