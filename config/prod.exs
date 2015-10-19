@@ -15,7 +15,8 @@ config :vault, Vault.Endpoint,
   http: [port: System.get_env("PORT")],
   url: [scheme: "https", host: System.get_env("HOST"), port: 443],
   force_ssl: [rewrite_on: [:x_forwarded_proto]],
-  cache_static_manifest: "priv/static/manifest.json"
+  cache_static_manifest: "priv/static/manifest.json",
+  secret_key_base: System.get_env("SECRET_KEY_BASE")
 
 # ## SSL Support
 #
@@ -47,13 +48,6 @@ config :logger, level: :info
 #
 #     config :vault, Vault.Endpoint, server: true
 #
-
-# Finally import the config/prod.secret.exs
-# which should be versioned separately.
-use Mix.Config
-
-config :vault, Vault.Endpoint,
-  secret_key_base: System.get_env("SECRET_KEY_BASE")
 
 # Configure your database
 config :vault, Vault.Repo,
