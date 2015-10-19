@@ -6,7 +6,7 @@ use Mix.Config
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we use it
 # with brunch.io to recompile .js and .css sources.
-config :demo_phoenix_oauth, DemoPhoenixOauth.Endpoint,
+config :vault, Vault.Endpoint,
   http: [port: 4000],
   debug_errors: false,
   code_reloader: true,
@@ -14,7 +14,7 @@ config :demo_phoenix_oauth, DemoPhoenixOauth.Endpoint,
   watchers: [node: ["node_modules/brunch/bin/brunch", "watch"]]
 
 # Watch static and templates for browser reloading.
-config :demo_phoenix_oauth, DemoPhoenixOauth.Endpoint,
+config :vault, Vault.Endpoint,
   live_reload: [
     patterns: [
       ~r{priv/static/.*(js|css|png|jpeg|jpg|gif)$},
@@ -27,10 +27,10 @@ config :demo_phoenix_oauth, DemoPhoenixOauth.Endpoint,
 config :logger, :console, format: "[$level] $message\n"
 
 # Configure your database
-config :demo_phoenix_oauth, DemoPhoenixOauth.Repo,
+config :vault, Vault.Repo,
   adapter: Ecto.Adapters.Postgres,
   hostname: "localhost",
   username: "postgres",
   password: "postgres",
-  database: "demo_phoenix_oauth_dev",
+  database: "vault_dev",
   size: 10 # The amount of database connections in the pool

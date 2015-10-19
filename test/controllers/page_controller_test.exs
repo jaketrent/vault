@@ -1,5 +1,5 @@
-defmodule DemoPhoenixOauth.PageControllerTest do
-  use DemoPhoenixOauth.ConnCase
+defmodule Vault.PageControllerTest do
+  use Vault.ConnCase
 
   test "GET /" do
     conn = get conn(), "/"

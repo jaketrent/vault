@@ -1,4 +1,4 @@
-defmodule DemoPhoenixOauth.Repo.Migrations.CreateQuote do
+defmodule Vault.Repo.Migrations.CreateQuote do
   use Ecto.Migration
 
   def change do

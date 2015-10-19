@@ -1,4 +1,4 @@
-defmodule DemoPhoenixOauth do
+defmodule Vault do
   use Application
 
   # See http://elixir-lang.org/docs/stable/elixir/Application.html
@@ -8,23 +8,23 @@ defmodule DemoPhoenixOauth do
 
     children = [
       # Start the endpoint when the application starts
-      supervisor(DemoPhoenixOauth.Endpoint, []),
+      supervisor(Vault.Endpoint, []),
       # Start the Ecto repository
-      worker(DemoPhoenixOauth.Repo, []),
+      worker(Vault.Repo, []),
       # Here you could define other workers and supervisors as children
-      # worker(DemoPhoenixOauth.Worker, [arg1, arg2, arg3]),
+      # worker(Vault.Worker, [arg1, arg2, arg3]),
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
     # for other strategies and supported options
-    opts = [strategy: :one_for_one, name: DemoPhoenixOauth.Supervisor]
+    opts = [strategy: :one_for_one, name: Vault.Supervisor]
     Supervisor.start_link(children, opts)
   end
 
   # Tell Phoenix to update the endpoint configuration
   # whenever the application is updated.
   def config_change(changed, _new, removed) do
-    DemoPhoenixOauth.Endpoint.config_change(changed, removed)
+    Vault.Endpoint.config_change(changed, removed)
     :ok
   end
 end

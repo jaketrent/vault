@@ -1,7 +1,7 @@
-defmodule DemoPhoenixOauth.V1.QuoteController do
-  use DemoPhoenixOauth.Web, :controller
+defmodule Vault.V1.QuoteController do
+  use Vault.Web, :controller
 
-  alias DemoPhoenixOauth.Quote
+  alias Vault.Quote
 
   plug :scrub_params, "data" when action in [:create, :update]
 
@@ -19,7 +19,7 @@ defmodule DemoPhoenixOauth.V1.QuoteController do
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
-        |> render(DemoPhoenixOauth.ChangesetView, "error.json", changeset: changeset)
+        |> render(Vault.ChangesetView, "error.json", changeset: changeset)
     end
   end
 
@@ -38,7 +38,7 @@ defmodule DemoPhoenixOauth.V1.QuoteController do
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
-        |> render(DemoPhoenixOauth.ChangesetView, "error.json", changeset: changeset)
+        |> render(Vault.ChangesetView, "error.json", changeset: changeset)
     end
   end
 

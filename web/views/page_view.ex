@@ -1,3 +1,3 @@
-defmodule DemoPhoenixOauth.PageView do
-  use DemoPhoenixOauth.Web, :view
+defmodule Vault.PageView do
+  use Vault.Web, :view
 end

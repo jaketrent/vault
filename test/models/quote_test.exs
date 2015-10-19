@@ -1,7 +1,7 @@
-defmodule DemoPhoenixOauth.QuoteTest do
-  use DemoPhoenixOauth.ModelCase
+defmodule Vault.QuoteTest do
+  use Vault.ModelCase
 
-  alias DemoPhoenixOauth.Quote
+  alias Vault.Quote
 
   @valid_attrs %{author: "some content", body: "some content", title: "some content"}
   @invalid_attrs %{}

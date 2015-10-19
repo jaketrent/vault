@@ -1,4 +1,4 @@
-defmodule DemoPhoenixOauth.Repo.Migrations.CreateBook do
+defmodule Vault.Repo.Migrations.CreateBook do
   use Ecto.Migration
 
   def change do

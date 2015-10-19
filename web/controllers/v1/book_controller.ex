@@ -1,14 +1,14 @@
-defmodule DemoPhoenixOauth.V1.BookController do
-  use DemoPhoenixOauth.Web, :controller
+defmodule Vault.V1.BookController do
+  use Vault.Web, :controller
 
-  alias DemoPhoenixOauth.Book
-  alias DemoPhoenixOauth.Router.Helpers, as: RouterHelpers
+  alias Vault.Book
+  alias Vault.Router.Helpers, as: RouterHelpers
 
   plug :scrub_params, "data" when action in [:create, :update]
 
   def index(conn, _params) do
     page = Book
-    |> DemoPhoenixOauth.Repo.paginate(_params)
+    |> Vault.Repo.paginate(_params)
 
     conn
     |> merge_resp_headers([
@@ -28,7 +28,7 @@ defmodule DemoPhoenixOauth.V1.BookController do
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
-        |> render(DemoPhoenixOauth.ChangesetView, "error.json", changeset: changeset)
+        |> render(Vault.ChangesetView, "error.json", changeset: changeset)
     end
   end
 
@@ -47,7 +47,7 @@ defmodule DemoPhoenixOauth.V1.BookController do
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
-        |> render(DemoPhoenixOauth.ChangesetView, "error.json", changeset: changeset)
+        |> render(Vault.ChangesetView, "error.json", changeset: changeset)
     end
   end
 

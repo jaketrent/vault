@@ -6,12 +6,12 @@
 use Mix.Config
 
 # Configures the endpoint
-config :demo_phoenix_oauth, DemoPhoenixOauth.Endpoint,
+config :vault, Vault.Endpoint,
   url: [host: "localhost"],
   root: Path.dirname(__DIR__),
   secret_key_base: "I0BOQLrb7gOh3ItcX6c/+UW/+cR+T9d7PF/hL1QUh+aDQkJE+m00vEJDJYMA9Xl6",
   render_errors: [accepts: ["json"]],
-  pubsub: [name: DemoPhoenixOauth.PubSub,
+  pubsub: [name: Vault.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger

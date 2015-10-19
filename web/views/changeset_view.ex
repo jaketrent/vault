@@ -1,5 +1,5 @@
-defmodule DemoPhoenixOauth.ChangesetView do
-  use DemoPhoenixOauth.Web, :view
+defmodule Vault.ChangesetView do
+  use Vault.Web, :view
 
   def render("error.json", %{changeset: changeset}) do
     %{errors: Enum.map(changeset.errors, &fmt_validation_error/1)}

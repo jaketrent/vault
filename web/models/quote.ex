@@ -1,5 +1,5 @@
-defmodule DemoPhoenixOauth.Quote do
-  use DemoPhoenixOauth.Web, :model
+defmodule Vault.Quote do
+  use Vault.Web, :model
 
   schema "quotes" do
     field :title, :string

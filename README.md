@@ -1,4 +1,4 @@
-# DemoPhoenixOauth
+# Vault
 
 To start your new Phoenix application:
 

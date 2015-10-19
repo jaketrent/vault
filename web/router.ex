@@ -1,5 +1,5 @@
-defmodule DemoPhoenixOauth.Router do
-  use DemoPhoenixOauth.Web, :router
+defmodule Vault.Router do
+  use Vault.Web, :router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -18,13 +18,13 @@ defmodule DemoPhoenixOauth.Router do
     plug AuthenticationPlug
   end
 
-  scope "/", DemoPhoenixOauth do
+  scope "/", Vault do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
   end
 
-  scope "/api", DemoPhoenixOauth do
+  scope "/api", Vault do
     pipe_through :api
 
     scope "/v1", V1, as: :v1 do
@@ -33,7 +33,7 @@ defmodule DemoPhoenixOauth.Router do
     end
   end
 
-  scope "/auth", alias: DemoPhoenixOauth do
+  scope "/auth", alias: Vault do
     pipe_through :browser
 
     get "/login", AuthController, :login

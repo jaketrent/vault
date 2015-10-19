@@ -1,7 +1,7 @@
-defmodule DemoPhoenixOauth.BookTest do
-  use DemoPhoenixOauth.ModelCase
+defmodule Vault.BookTest do
+  use Vault.ModelCase
 
-  alias DemoPhoenixOauth.Book
+  alias Vault.Book
 
   @valid_attrs %{affiliate_url: "some content", author: "some content", complete_date: %{day: 17, month: 4, year: 2010}, cover_url: "some content", description: "some content", review_url: "some content", title: "some content"}
   @invalid_attrs %{}

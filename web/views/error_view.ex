@@ -1,16 +1,16 @@
-defmodule DemoPhoenixOauth.ErrorView do
-  use DemoPhoenixOauth.Web, :view
+defmodule Vault.ErrorView do
+  use Vault.Web, :view
 
   def render("400.json", assigns) do
-    %{errors: [render_one(assigns.reason, DemoPhoenixOauth.ErrorView, "error.json") ]}
+    %{errors: [render_one(assigns.reason, Vault.ErrorView, "error.json") ]}
   end
 
   def render("404.json", assigns) do
-    %{errors: [render_one(assigns.reason, DemoPhoenixOauth.ErrorView, "error.json") ]}
+    %{errors: [render_one(assigns.reason, Vault.ErrorView, "error.json") ]}
   end
 
   def render("500.json", assigns) do
-    %{errors: [render_one(assigns.reason, DemoPhoenixOauth.ErrorView, "error.json") ]}
+    %{errors: [render_one(assigns.reason, Vault.ErrorView, "error.json") ]}
   end
 
   def render("error.json", reason) do

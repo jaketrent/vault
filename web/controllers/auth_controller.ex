@@ -1,5 +1,5 @@
-defmodule DemoPhoenixOauth.AuthController do
-  use DemoPhoenixOauth.Web, :controller
+defmodule Vault.AuthController do
+  use Vault.Web, :controller
 
   # plug :action
 

@@ -1,5 +1,5 @@
-defmodule DemoPhoenixOauth.Book do
-  use DemoPhoenixOauth.Web, :model
+defmodule Vault.Book do
+  use Vault.Web, :model
 
   schema "books" do
     field :title, :string

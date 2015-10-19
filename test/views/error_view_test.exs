@@ -1,21 +1,21 @@
-defmodule DemoPhoenixOauth.ErrorViewTest do
-  use DemoPhoenixOauth.ConnCase, async: true
+defmodule Vault.ErrorViewTest do
+  use Vault.ConnCase, async: true
 
   # Bring render/3 and render_to_string/3 for testing custom views
   import Phoenix.View
 
   test "renders 404.html" do
-    assert render_to_string(DemoPhoenixOauth.ErrorView, "404.html", []) ==
+    assert render_to_string(Vault.ErrorView, "404.html", []) ==
            "Page not found"
   end
 
   test "render 500.html" do
-    assert render_to_string(DemoPhoenixOauth.ErrorView, "500.html", []) ==
+    assert render_to_string(Vault.ErrorView, "500.html", []) ==
            "Server internal error"
   end
 
   test "render any other" do
-    assert render_to_string(DemoPhoenixOauth.ErrorView, "505.html", []) ==
+    assert render_to_string(Vault.ErrorView, "505.html", []) ==
            "Server internal error"
   end
 end

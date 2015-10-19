@@ -1,4 +1,4 @@
-defmodule DemoPhoenixOauth.ConnCase do
+defmodule Vault.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -21,21 +21,21 @@ defmodule DemoPhoenixOauth.ConnCase do
       use Phoenix.ConnTest
 
       # Alias the data repository and import query/model functions
-      alias DemoPhoenixOauth.Repo
+      alias Vault.Repo
       import Ecto.Model
       import Ecto.Query, only: [from: 2]
 
       # Import URL helpers from the router
-      import DemoPhoenixOauth.Router.Helpers
+      import Vault.Router.Helpers
 
       # The default endpoint for testing
-      @endpoint DemoPhoenixOauth.Endpoint
+      @endpoint Vault.Endpoint
     end
   end
 
   setup tags do
     unless tags[:async] do
-      Ecto.Adapters.SQL.restart_test_transaction(DemoPhoenixOauth.Repo, [])
+      Ecto.Adapters.SQL.restart_test_transaction(Vault.Repo, [])
     end
 
     :ok

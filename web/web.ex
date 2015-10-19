@@ -1,12 +1,12 @@
-defmodule DemoPhoenixOauth.Web do
+defmodule Vault.Web do
   @moduledoc """
   A module that keeps using definitions for controllers,
   views and so on.
 
   This can be used in your application as:
 
-      use DemoPhoenixOauth.Web, :controller
-      use DemoPhoenixOauth.Web, :view
+      use Vault.Web, :controller
+      use Vault.Web, :view
 
   The definitions below will be executed for every view,
   controller, etc, so keep them short and clean, focused
@@ -27,12 +27,12 @@ defmodule DemoPhoenixOauth.Web do
       use Phoenix.Controller
 
       # Alias the data repository and import query/model functions
-      alias DemoPhoenixOauth.Repo
+      alias Vault.Repo
       import Ecto.Model
       import Ecto.Query, only: [from: 2]
 
       # Import URL helpers from the router
-      import DemoPhoenixOauth.Router.Helpers
+      import Vault.Router.Helpers
     end
   end
 
@@ -44,7 +44,7 @@ defmodule DemoPhoenixOauth.Web do
       import Phoenix.Controller, only: [get_csrf_token: 0, get_flash: 2, view_module: 1]
 
       # Import URL helpers from the router
-      import DemoPhoenixOauth.Router.Helpers
+      import Vault.Router.Helpers
 
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
@@ -62,7 +62,7 @@ defmodule DemoPhoenixOauth.Web do
       use Phoenix.Channel
 
       # Alias the data repository and import query/model functions
-      alias DemoPhoenixOauth.Repo
+      alias Vault.Repo
       import Ecto.Model
       import Ecto.Query, only: [from: 2]
 

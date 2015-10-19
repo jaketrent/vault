@@ -1,3 +1,3 @@
-defmodule DemoPhoenixOauth.PageViewTest do
-  use DemoPhoenixOauth.ConnCase, async: true
+defmodule Vault.PageViewTest do
+  use Vault.ConnCase, async: true
 end

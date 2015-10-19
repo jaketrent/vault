@@ -1,8 +1,8 @@
-defmodule DemoPhoenixOauth.Mixfile do
+defmodule Vault.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :demo_phoenix_oauth,
+    [app: :vault,
      version: "0.0.1",
      elixir: "~> 1.0",
      elixirc_paths: elixirc_paths(Mix.env),
@@ -16,7 +16,7 @@ defmodule DemoPhoenixOauth.Mixfile do
   #
   # Type `mix help compile.app` for more information
   def application do
-    [mod: {DemoPhoenixOauth, []},
+    [mod: {Vault, []},
      applications: [:phoenix, :phoenix_html, :cowboy, :logger,
                     :phoenix_ecto, :postgrex, :oauth2]]
   end
