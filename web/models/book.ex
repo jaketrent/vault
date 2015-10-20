@@ -26,4 +26,9 @@ defmodule Vault.Book do
     model
     |> cast(params, @required_fields, @optional_fields)
   end
+
+  def by_completion(query) do
+    from book in query,
+    order_by: [desc: book.complete_date]
+  end
 end

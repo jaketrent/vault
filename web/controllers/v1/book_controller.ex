@@ -8,6 +8,7 @@ defmodule Vault.V1.BookController do
 
   def index(conn, _params) do
     page = Book
+    |> Book.by_completion
     |> Vault.Repo.paginate(_params)
 
     conn
