@@ -19,7 +19,7 @@ defmodule Vault.Endpoint do
   plug Plug.RequestId
   plug Plug.Logger
   plug Corsica,
-    origins: String.split(System.get_env("ALLOWED_ORIGINS"), ",", trim: true),
+    origins: (if (System.get_env("ALLOWED_ORIGINS")), do: String.split(System.get_env("ALLOWED_ORIGINS"), ",", trim: true), else: "*"),
     expose_headers: ~w(Link),
     allow_credentials: true
 
