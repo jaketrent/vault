@@ -1,4 +1,5 @@
 %{"cors_plug": {:git, "git://github.com/jaketrent/cors_plug.git", "923ac012ed9281eba79bf992decab9e77af54f2a", []},
+  "corsica": {:hex, :corsica, "0.4.0"},
   "cowboy": {:hex, :cowboy, "1.0.3"},
   "cowlib": {:hex, :cowlib, "1.0.1"},
   "decimal": {:hex, :decimal, "1.1.0"},

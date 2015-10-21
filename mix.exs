@@ -29,7 +29,7 @@ defmodule Vault.Mixfile do
   #
   # Type `mix help deps` for examples and options
   defp deps do
-    [{:cors_plug, github: "jaketrent/cors_plug"},
+    [{:corsica, "~> 0.4"},
      {:phoenix, "~> 1.0.2"},
      {:phoenix_ecto, "~> 1.1"},
      {:postgrex, ">= 0.0.0"},

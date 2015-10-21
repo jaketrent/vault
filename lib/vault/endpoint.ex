@@ -18,10 +18,10 @@ defmodule Vault.Endpoint do
 
   plug Plug.RequestId
   plug Plug.Logger
-  plug CORSPlug, [
-    origin: System.get_env("ALLOWED_ORIGIN"),
-    expose: ["Link"]
-  ]
+  plug Corsica,
+    origins: String.split(System.get_env("ALLOWED_ORIGINS"), ",", trim: true),
+    expose_headers: ~w(Link),
+    allow_credentials: true
 
   plug Plug.Parsers,
     parsers: [:urlencoded, :multipart, :json],
